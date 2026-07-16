@@ -1,0 +1,55 @@
+# ============================================================
+#  ADICIONARES GLOBAL INC — .gitignore
+# ============================================================
+
+# Dependências
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Variáveis de ambiente (segurança)
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos de backup/zip (não fazem parte do app)
+*.zip
+*.rar
+*.tar.gz
+
+# Pastas de ferramentas de IA (não fazem parte do app)
+.agent/
+.agents/
+.gemini/
+.system_generated/
+
+# Arquivos temporários de planejamento
+walkthrough.md
+task.md
+implementation_plan.md
+
+# Scripts utilitários internos (não fazem parte do app)
+check_posts.cjs
+metadata.json

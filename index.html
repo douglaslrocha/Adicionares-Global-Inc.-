@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#08080A" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Adicionares Space</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Belleza&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- New Fonts for Feed Screen -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        // Existing colors
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "surface-dark-highlight": "#334155",
+                        "accent-blue": "#3b82f6",
+                        "accent-purple": "#8b5cf6",
+                        "accent-orange": "#f97316",
+                        "accent-pink": "#ec4899",
+
+                        // New colors from Feed Screen
+                        "primary": "#E0E0E0", // Overwritten/New
+                        "primary-hover": "#FFFFFF",
+                        "onyx": "#050505",
+                        "onyx-light": "#0F0F0F",
+                        "onyx-card": "#141414",
+                        "glass-border": "rgba(255, 255, 255, 0.12)",
+                        "silver": "#C0C0C0",
+                        "platinum": "#E5E4E2",
+                        "deep-gray": "#1A1A1A",
+                        "dark-silver": "#8F8F8F",
+                    },
+                    fontFamily: {
+                        "display": ["'Clash Display'", "Inter", "sans-serif"], // Combined
+                        "serif": ["Playfair Display", "serif"],
+                        "belleza": ["Belleza", "sans-serif"],
+                        "body": ["'Plus Jakarta Sans'", "sans-serif"],
+                        "arimo": ["Arimo", "sans-serif"],
+                        "monteserra": ["'Montserrat'", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "2xl": "4rem", "full": "9999px" },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.1)',
+                        'glow': '0 0 20px rgba(139, 92, 246, 0.5)',
+
+                        // New shadows
+                        'neon': '0 0 15px rgba(224, 224, 224, 0.3)',
+                        'neon-hover': '0 0 25px rgba(255, 255, 255, 0.5)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+                        '3d': '0 4px 0px 0px rgba(50,50,50,0.8)',
+                        '3d-silver': '0 4px 0px 0px rgba(150,150,150,0.4)',
+                        'glow-silver': '0 0 10px rgba(229, 228, 226, 0.4)',
+                        'glow-silver-light': '0 0 10px rgba(229, 228, 226, 0.2)',
+                        'glow-blue': '0 0 15px rgba(59, 130, 246, 0.6)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'fade-in': 'fadeIn 1.2s ease-out forwards',
+                        'blob-move-1': 'blobMove1 20s infinite alternate',
+                        'blob-move-2': 'blobMove2 25s infinite alternate-reverse',
+                        'blob-move-3': 'blobMove3 22s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scale-loop': 'scaleLoop 20s ease-in-out infinite alternate',
+                        'pulse-soft': 'pulseSoft 3s infinite',
+
+                        // New animations
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'spin-medium': 'spin 4s linear infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                        'zoom-in-pulse': 'zoomInPulse 2s infinite alternate',
+                        'chat-pulse-animation': 'chatPulse 1.5s ease-in-out infinite alternate',
+                        'menu-float-animation': 'menuFloat 5s ease-in-out infinite',
+                        'shimmer-plus': 'shimmerPlus 2s linear infinite',
+                        'star-pattern-move': 'starPatternMove 60s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        blobMove1: {
+                            '0%': { transform: 'translate(0, 0) scale(1)' },
+                            '100%': { transform: 'translate(50px, -50px) scale(1.1)' },
+                        },
+                        blobMove2: {
+                            '0%': { transform: 'translate(0, 0) scale(1)' },
+                            '100%': { transform: 'translate(-30px, 40px) scale(0.9)' },
+                        },
+                        blobMove3: {
+                            '0%': { transform: 'translate(0, 0) scale(1)' },
+                            '100%': { transform: 'translate(40px, 20px) scale(1.2)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        scaleLoop: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' }
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' }
+                        },
+
+                        // New keyframes
+                        glow: {
+                            'from': { boxShadow: '0 0 5px rgba(224, 224, 224, 0.1)' },
+                            'to': { boxShadow: '0 0 20px rgba(224, 224, 224, 0.4), 0 0 10px rgba(224, 224, 224, 0.2)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' }
+                        },
+                        zoomInPulse: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.03)' },
+                        },
+                        chatPulse: {
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 rgba(229, 228, 226, 0.5)' },
+                            '50%': { transform: 'scale(1.05)', boxShadow: '0 0 15px rgba(229, 228, 226, 0.8)' },
+                        },
+                        menuFloat: {
+                            '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                            '25%': { transform: 'translateY(-5px) scale(1.02)' },
+                            '75%': { transform: 'translateY(5px) scale(0.98)' },
+                        },
+                        shimmerPlus: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        starPatternMove: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '100% 100%' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.8);
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms;
+        }
+
+        .delay-500 {
+            animation-delay: 500ms;
+        }
+
+        /* New CSS from Feed Screen */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none
+        }
+
+        /* Fix horizontal scrolling on Stories */
+        .mask-linear {
+            mask-image: linear-gradient(to right, transparent, black 10px, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black 90%, transparent);
+        }
+
+        .stellar-bg {
+            background-color: #050505;
+            background-image: radial-gradient(circle at 15% 50%, rgba(200, 200, 200, 0.03) 0%, transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 25%), radial-gradient(circle at 50% 80%, rgba(160, 160, 160, 0.02) 0%, transparent 30%);
+            position: relative;
+            background-size: 200% 200%;
+            animation: starPatternMove 60s linear infinite
+        }
+
+        .stellar-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDYwBYwDTYYI8CASy_MNs8EQUewpJ3iDOPUOViGw3necthOuv2HbxttYdZpSmCYi-J4Q0WA7A6J44jFUEGCUX2HkZKRrbrfVQBCBGs3JXtOHVzILs6xNGjUyTsNh1hDlb0B4d5ULySoHBuuNB5jAmyVe1NVaMfLP7nAPza4WIeuV9B6kQZKLTU117qdabLKmBw59xxCYa3UDPum4DGk8kk8UbZhXYpqp8XHH0b65YLZqBBls-LRXhjhXX9VnKc6pPn2cYr0XxqXAy0);
+            mask-image: linear-gradient(to bottom, black, transparent);
+            pointer-events: none;
+            opacity: 0.05;
+            animation: starPatternMove 120s linear infinite reverse
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7)
+        }
+
+        .premium-card {
+            background: linear-gradient(160deg, #1A1A1A 0%, #0A0A0A 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            position: relative
+        }
+
+        .premium-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 40%, transparent 60%, rgba(255, 255, 255, 0.03));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none
+        }
+
+        .story-ring-mobile {
+            background: conic-gradient(from 0deg, transparent 0%, #C0C0C0 10%, transparent 30%, #E5E4E2 50%, transparent 70%, #C0C0C0 90%, transparent 100%);
+            animation: spin-slow 6s linear infinite
+        }
+
+        /* Fallback/Correction for animation name reference */
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .frosted-icon-mobile {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+            transition: all 0.3s ease
+        }
+
+        .frosted-icon-mobile:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            transform: translateY(-2px)
+        }
+
+        .text-glow {
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4)
+        }
+
+        .metallic-text {
+            background: linear-gradient(to bottom, #fff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .bg-gradient-silver {
+            background: linear-gradient(to right, #E5E4E2, #C0C0C0)
+        }
+
+        .text-gradient-silver {
+            background: linear-gradient(to right, #E5E4E2, #C0C0C0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .shimmer-input-border {
+            position: relative;
+            overflow: hidden
+        }
+
+        .shimmer-input-border::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from var(--angle, 0deg), transparent 0%, rgba(255, 255, 255, 0.2) 20%, transparent 40%);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease
+        }
+
+        .shimmer-input-border:focus-within::before {
+            opacity: 1
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        .post-enter-animation {
+            animation: fadeInUp 0.8s ease-out forwards
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .catch(err => console.error('SW falhou:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .mask-gradient-bottom {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes float-vision-pro {
+
+    0%,
+    100% {
+      transform: translate(-50%, 0) scale(var(--scale));
+    }
+
+    50% {
+      transform: translate(-50%, -15px) scale(var(--scale));
+    }
+  }
+
+  .animate-float-vision-pro {
+    animation: float-vision-pro 6s ease-in-out infinite;
+  }
+}
